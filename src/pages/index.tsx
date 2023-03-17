@@ -1,9 +1,21 @@
-import { Inter } from "next/font/google";
+import AppointmentForm from "../../components/Schedule/AppointmentForm";
+import AppointmentList from "../../components/Schedule/AppointmentList";
+import { useRequireAuth } from "../../utils/auth";
 
-export default function Home() {
+const HomePage = () => {
+  const auth = useRequireAuth();
+
+  if (auth.loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <>
-      <main>Hello</main>
-    </>
+    <div>
+      <h1>Welcome!</h1>
+      <AppointmentForm />
+      <AppointmentList />
+    </div>
   );
-}
+};
+
+export default HomePage;
